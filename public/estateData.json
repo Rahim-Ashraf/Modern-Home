@@ -13,7 +13,7 @@
             "Spa",
             "Home theater"
         ],
-        "image": "villa_image.jpg"
+        "image": "https://i.ibb.co/wKsK3yF/home1.jpg"
     },
     {
         "estate_title": "Downtown Loft with Cityscape Views",
@@ -29,7 +29,7 @@
             "Rooftop terrace",
             "24/7 concierge"
         ],
-        "image": "apartment_image.jpg"
+        "image": "https://i.ibb.co/dbmCPHP/home2.jpg"
     },
     {
         "estate_title": "Charming Countryside Cottage",
@@ -45,7 +45,7 @@
             "Garden",
             "Outdoor seating area"
         ],
-        "image": "cottage_image.jpg"
+        "image": "https://i.ibb.co/MGJq2Mq/home3.jpg"
     },
     {
         "estate_title": "Modern Condo with Bay Views",
@@ -61,7 +61,7 @@
             "Gym",
             "Business center"
         ],
-        "image": "condo_image.jpg"
+        "image": "https://i.ibb.co/tMCB8SK/home4.jpg"
     },
     {
         "estate_title": "Mountain Retreat with Ski-in/Ski-out Access",
@@ -77,7 +77,7 @@
             "Ski storage",
             "Game room"
         ],
-        "image": "chalet_image.jpg"
+        "image": "https://i.ibb.co/bzZpMjs/home5.jpg"
     },
     {
         "estate_title": "Seaside Bungalow with Private Beach",
@@ -93,6 +93,6 @@
             "Outdoor shower",
             "Hammock"
         ],
-        "image": "bungalow_image.jpg"
+        "image": "https://i.ibb.co/MNhJWVN/home6.jpg"
     }
 ]
