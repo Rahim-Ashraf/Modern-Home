@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { HouseContext } from "../../Provider/Provider";
 
 
 const Navbar = () => {
+    const { user } = useContext(HouseContext)
+    console.log(user)
     return (
         <div className="navbar bg-base-100">
             <div className="navbar-start">
