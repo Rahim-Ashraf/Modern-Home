@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { HouseContext } from "../../Provider/Provider";
 import { Helmet } from "react-helmet-async";
@@ -42,7 +42,7 @@ const Login = () => {
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                        <input type="password" name="password" placeholder="password" className="input input-bordered w-full" required />
                     </div>
                     <div className="form-control mt-6">
                         <button className="btn btn-primary">Login</button>

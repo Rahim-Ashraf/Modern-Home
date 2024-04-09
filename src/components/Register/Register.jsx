@@ -1,13 +1,15 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { HouseContext } from "../../Provider/Provider";
-
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet-async";
+import { FaEye } from "react-icons/fa";
+import { IoMdEyeOff } from "react-icons/io";
 
 
 const Register = () => {
+    const [showPass, setShowPass] = useState(true);
     const { register } = useContext(HouseContext);
     const [registerError, setRegisterError] = useState("")
     const [registerSuccess, setRegisterSuccess] = useState("")
@@ -75,7 +77,10 @@ const Register = () => {
                         <label className="label">
                             <span className="label-text">Password</span>
                         </label>
-                        <input type="password" name="password" placeholder="password" className="input input-bordered" required />
+                        <div className="relative">
+                            <span onClick={() => setShowPass(!showPass)} className="absolute right-2 top-4">{showPass ? <FaEye /> : <IoMdEyeOff />}</span>
+                            <input type={showPass ? "password" : "text"} name="password" placeholder="password" className="input input-bordered w-full" required />
+                        </div>
                     </div>
                     <div className="form-control mt-6">
                         <button type="submit" className="btn btn-primary">Register</button>

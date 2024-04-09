@@ -8,7 +8,6 @@ export const HouseContext = createContext(null);
 const Provider = ({ children }) => {
     const [loader, setLoader] = useState(true)
     const [user, setUser] = useState(null)
-    console.log(user)
 
     const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider();
@@ -39,7 +38,6 @@ const Provider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
-            console.log(currentUser)
             setLoader(false);
         });
         return () => {
