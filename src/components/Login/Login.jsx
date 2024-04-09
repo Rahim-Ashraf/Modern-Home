@@ -50,15 +50,15 @@ const Login = () => {
                 </form>
                 <div>
                     <p>
-                        Register with <button onClick={handleGoogleLogin} className="text-blue-600 font-bold">Google</button>
+                        Login with <button onClick={handleGoogleLogin} className="text-blue-600 font-bold">Google</button>
                     </p>
                     <p>
-                        Register with <button onClick={handleGithubLogin} className="text-blue-600 font-bold">Github</button>
+                        Login with <button onClick={handleGithubLogin} className="text-blue-600 font-bold">Github</button>
                     </p>
                 </div>
                 <div>
                     <span>New here?</span>
-                    <Link to={"/register"} className="text-blue-600 font-bold"> Register Now</Link>
+                    <Link to={"/register"} className="text-cyan-600 font-bold"> Register Now</Link>
                 </div>
             </div>
         </div>
