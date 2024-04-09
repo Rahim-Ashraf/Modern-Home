@@ -6,7 +6,7 @@ import { CiLocationOn } from "react-icons/ci";
 
 const CardDetails = () => {
     const { id } = useParams();
-    const [estateData, setEstateData] = useState({})
+    const [estateData, setEstateData] = useState(null)
     useEffect(() => {
         fetch("https://raw.githubusercontent.com/Rahim-Ashraf/estateData/main/estateData.json")
             .then(res => res.json())
@@ -17,31 +17,33 @@ const CardDetails = () => {
             <Helmet>
                 <title>Modern House | Card details</title>
             </Helmet>
-            <div className="w-full md:w-1/2">
-                <img className="w-full" src={estateData?.image} alt="Movie" />
-            </div>
-            <div className="card-body">
-                <h2 className="card-title">{estateData?.estate_title}</h2>
-                <p>{estateData?.description}</p>
-                <div className="flex justify-between">
-                    <div className="flex gap-2 items-center">
-                        <CiLocationOn />
-                        <p>{estateData?.location}</p>
+            <div className="lg:flex">
+                <div className="w-full md:w-1/2">
+                    <img className="w-full" src={estateData?.image} alt="Movie" />
+                </div>
+                <div className="card-body">
+                    <h2 className="text-4xl font-bold mb-4">{estateData?.estate_title}</h2>
+                    <p>{estateData?.description}</p>
+                    <div className="flex justify-between">
+                        <div className="flex gap-2 items-center">
+                            <CiLocationOn />
+                            <p>{estateData?.location}</p>
+                        </div>
+                        <div><p><span className="font-bold">Area: </span>{estateData?.area}</p></div>
                     </div>
-                    <div><p><span className="font-bold">Area: </span>{estateData?.area}</p></div>
-                </div>
-                <div className="flex justify-between">
-                    <ul>
-                        <li className="font-bold">facilities:</li>
-                        <li className="ml-6 list-disc">{estateData?.facilities}</li>
-                        <li className="ml-6 list-disc">{estateData?.facilities}</li>
-                        <li className="ml-6 list-disc">{estateData?.facilities}</li>
-                    </ul>
-                    <div><p><span className="font-bold">Segment name: </span> {estateData?.segment_name}</p></div>
-                </div>
-                <div className="flex justify-between">
-                    <p>For: {estateData?.status}</p>
-                    <p>Price: {estateData?.price}</p>
+                    <div className="flex justify-between">
+                        <ul>
+                            <li className="font-bold">facilities:</li>
+                            <li className="ml-6 list-disc">{estateData?.facilities[0]}</li>
+                            <li className="ml-6 list-disc">{estateData?.facilities[1]}</li>
+                            <li className="ml-6 list-disc">{estateData?.facilities[2]}</li>
+                        </ul>
+                        <div><p><span className="font-bold">Segment name: </span> {estateData?.segment_name}</p></div>
+                    </div>
+                    <div className="flex justify-between">
+                        <div><p className="text-lg font-bold">For: {estateData?.status}</p></div>
+                        <div><p className="text-xl font-bold text-cyan-600">Price: {estateData?.price}</p></div>
+                    </div>
                 </div>
             </div>
         </div>

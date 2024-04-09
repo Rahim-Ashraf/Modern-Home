@@ -1,12 +1,21 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HouseContext } from "../../Provider/Provider";
 import { Helmet } from "react-helmet-async";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import AOS from 'aos';
+import 'aos/dist/aos.css'
+import { FcGoogle } from "react-icons/fc";
+import { FaGithub } from "react-icons/fa";
 
 
 const Login = () => {
+    useEffect(() => {
+        AOS.init()
+    }, [])
+    const navigate = useNavigate()
+    const location = useLocation()
     const { login, googleLogin, githubLogin } = useContext(HouseContext)
     const handleEmailLogin = e => {
         e.preventDefault();
@@ -15,7 +24,9 @@ const Login = () => {
         login(email, password)
             .then(res => {
                 const notifyLoginSuccess = () => toast.success("Loged in successfully");
+                navigate(location?.state ? location.state : "/")
                 notifyLoginSuccess()
+
             })
             .catch(err => {
                 const notifyLoginError = () => toast.error("Please provide valid email and password");
@@ -25,12 +36,25 @@ const Login = () => {
 
     const handleGoogleLogin = () => {
         googleLogin()
+            .then(res => {
+                navigate(location?.state ? location.state : "/")
+            })
+            .catch(err => {
+                console.error(err)
+            })
+
     }
     const handleGithubLogin = () => {
         githubLogin()
+            .then(res => {
+                navigate(location?.state ? location.state : "/")
+            })
+            .catch(err => {
+                console.error(err)
+            })
     }
     return (
-        <div className="card shrink-0 shadow-2xl bg-base-100 w-full md:w-2/3 lg:w-1/2 mx-auto">
+        <div data-aos="fade-up" data-aos-duration="2000" className="card shrink-0 shadow-2xl bg-base-100 w-full md:w-2/3 lg:w-1/2 mx-auto">
             <Helmet>
                 <title>Modern House | login</title>
             </Helmet>
@@ -53,11 +77,11 @@ const Login = () => {
                     </div>
                 </form>
                 <div>
-                    <p>
-                        Login with <button onClick={handleGoogleLogin} className="text-blue-600 font-bold">Google</button>
+                    <p className="flex gap-2">
+                        <span>Login with</span> <button onClick={handleGoogleLogin} className="text-blue-600 font-bold flex items-center"><FcGoogle /><span>oogle</span></button>
                     </p>
-                    <p>
-                        Login with <button onClick={handleGithubLogin} className="text-blue-600 font-bold">Github</button>
+                    <p className="flex gap-2">
+                        <span>Login with</span> <button onClick={handleGithubLogin} className="text-blue-600 font-bold flex items-center"><FaGithub /><span>Github</span></button>
                     </p>
                 </div>
                 <div>

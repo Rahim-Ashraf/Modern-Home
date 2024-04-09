@@ -3,42 +3,28 @@ import EstateCards from "./EstateCards/EstateCards";
 import About from "./About/About";
 import Contact from "./Contact/Contact";
 
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
+
 
 const Home = () => {
+
+
+
     return (
         <div>
             <Helmet>
                 <title>Modern House | Home</title>
             </Helmet>
-            <div className="carousel w-full">
-                <div id="slide1" className="carousel-item relative w-full">
-                    <img src="https://i.ibb.co/264MTWN/slide1.jpg" className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide4" className="btn btn-circle">❮</a>
-                        <a href="#slide2" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide2" className="carousel-item relative w-full">
-                    <img src="https://i.ibb.co/C0gnjvy/slide2.jpg" className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide1" className="btn btn-circle">❮</a>
-                        <a href="#slide3" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide3" className="carousel-item relative w-full">
-                    <img src="https://i.ibb.co/R3rGM36/slide3.jpg" className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide2" className="btn btn-circle">❮</a>
-                        <a href="#slide4" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
-                <div id="slide4" className="carousel-item relative w-full">
-                    <img src="https://i.ibb.co/ccj5R7S/slide4.jpg" className="w-full" />
-                    <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-                        <a href="#slide3" className="btn btn-circle">❮</a>
-                        <a href="#slide1" className="btn btn-circle">❯</a>
-                    </div>
-                </div>
+            <div className="mb-6">
+                <swiper-container speed="500" loop="true" navigation="true" pagination="true">
+                    <swiper-slide><img className=" rounded-xl" src="https://i.ibb.co/C0gnjvy/slide2.jpg" alt="" /></swiper-slide>
+                    <swiper-slide><img className=" rounded-xl" src="https://i.ibb.co/R3rGM36/slide3.jpg" alt="" /></swiper-slide>
+                    <swiper-slide><img className=" rounded-xl" src="https://i.ibb.co/ccj5R7S/slide4.jpg" alt="" /></swiper-slide>
+                    <swiper-slide><img className=" rounded-xl" src="https://i.ibb.co/264MTWN/slide1.jpg" alt="" /></swiper-slide>
+                </swiper-container>
             </div>
             <EstateCards></EstateCards>
             <About></About>

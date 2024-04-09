@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, signOut, GoogleAuthProvider, signInWithPopup, GithubAuthProvider, updateProfile } from "firebase/auth";
 import app from "../firebase/firebase.config";
 
 
@@ -35,9 +35,16 @@ const Provider = ({ children }) => {
         return signOut(auth)
     }
 
+    const updateUser = (name, photoURL) => {
+        return updateProfile(auth.currentUser, {
+            displayName: name, photoURL: photoURL
+        })
+    }
+
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
+
             setLoader(false);
         });
         return () => {
@@ -52,7 +59,8 @@ const Provider = ({ children }) => {
         logOut,
         googleLogin,
         githubLogin,
-        loader
+        loader,
+        updateUser
     }
     return (
         <HouseContext.Provider value={houseInfo}>

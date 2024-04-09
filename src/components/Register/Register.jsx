@@ -1,15 +1,21 @@
-import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { HouseContext } from "../../Provider/Provider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
+import AOS from 'aos';
+import 'aos/dist/aos.css'
 
 
 const Register = () => {
-    const { register } = useContext(HouseContext);
+    useEffect(() => {
+        AOS.init()
+    }, [])
+    const navigate = useNavigate()
+    const { register, updateUser } = useContext(HouseContext);
     const [showPass, setShowPass] = useState(true);
     const [registerError, setRegisterError] = useState("")
     const handleEmailRegister = (e) => {
@@ -35,7 +41,10 @@ const Register = () => {
 
         register(email, password)
             .then(res => {
+                updateUser(name, photoURL)
+                .then(res=> console.log("succeesss"))
                 const notify = () => toast.success("Registerd successfully");
+                navigate("/")
                 notify()
             })
             .catch(err => {
@@ -44,7 +53,7 @@ const Register = () => {
             })
     }
     return (
-        <div className="card  shadow-2xl bg-base-100 w-full md:w-2/3 lg:w-1/2 mx-auto">
+        <div data-aos="fade-up" data-aos-duration="2000" className="card  shadow-2xl bg-base-100 w-full md:w-2/3 lg:w-1/2 mx-auto">
             <Helmet>
                 <title>Modern House | Register</title>
             </Helmet>

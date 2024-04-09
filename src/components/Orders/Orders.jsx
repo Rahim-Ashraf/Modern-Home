@@ -6,7 +6,6 @@ import OrderCard from "./OrderCard/OrderCard";
 
 const Dashboard = () => {
     const data = useLoaderData()
-    console.log(data, typeof (data))
     const { user } = useContext(HouseContext);
     return (
         <div>
