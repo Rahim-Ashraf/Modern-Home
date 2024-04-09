@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 
 
@@ -13,6 +14,9 @@ const CardDetails = () => {
     console.log(estateData)
     return (
         <div className="card card-side shadow-xl">
+            <Helmet>
+                <title>Modern House | Card details</title>
+            </Helmet>
             <div className="w-full md:w-1/2">
                 <img className="w-full" src={estateData?.image} alt="Movie" />
             </div>

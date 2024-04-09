@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { HouseContext } from "../../Provider/Provider";
+import { Helmet } from "react-helmet-async";
 
 
 const Login = () => {
@@ -26,6 +27,9 @@ const Login = () => {
     }
     return (
         <div className="card shrink-0 shadow-2xl bg-base-100 w-full md:w-2/3 lg:w-1/2 mx-auto">
+            <Helmet>
+                <title>Modern House | login</title>
+            </Helmet>
             <div className="card-body">
                 <form onSubmit={handleEmailLogin}>
                     <div className="form-control">

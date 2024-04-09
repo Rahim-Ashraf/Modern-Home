@@ -4,6 +4,7 @@ import { HouseContext } from "../../Provider/Provider";
 
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Helmet } from "react-helmet-async";
 
 
 const Register = () => {
@@ -20,7 +21,7 @@ const Register = () => {
         const name = e.target.name.value;
         const photoURL = e.target.photoURL.value;
 
-        
+
 
         if (password.length < 6) {
             setRegisterError("password should be atlest 6 charecter");
@@ -42,11 +43,14 @@ const Register = () => {
             .catch(err => {
 
             })
-            setRegisterSuccess("Loged in successfully");
+        setRegisterSuccess("Loged in successfully");
         notify();
     }
     return (
         <div className="card  shadow-2xl bg-base-100 w-full md:w-2/3 lg:w-1/2 mx-auto">
+            <Helmet>
+                <title>Modern House | Register</title>
+            </Helmet>
             <div className="card-body">
                 <form onSubmit={handleEmailRegister}>
                     <div className="form-control">
