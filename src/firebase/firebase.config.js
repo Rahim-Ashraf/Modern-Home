@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAx29DHtEolJkxRNKMOE8Ym5XQrd5nx4Tw",
-    authDomain: "modern-home-5bf14.firebaseapp.com",
-    projectId: "modern-home-5bf14",
-    storageBucket: "modern-home-5bf14.appspot.com",
-    messagingSenderId: "900524259302",
-    appId: "1:900524259302:web:278bc5c94cc32fb7d4c827"
+    apiKey:import.meta.env.VITE_APIKEY,
+    authDomain:import.meta.env.VITE_AUTHDOMAIN,
+    projectId:import.meta.env.VITE_PROJECTID,
+    storageBucket:import.meta.env.VITE_STORAGEBUCKET,
+    messagingSenderId:import.meta.env.VITE_MESSAGINGSENDERID,
+    appId:import.meta.env.VITE_APPID,
 };
 
 // Initialize Firebase
