@@ -34,9 +34,11 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <button onClick={handleLogOut} className="btn text-white bg-cyan-600 font-bold">Log Out</button>
+                                <button onClick={handleLogOut} className="btn text-white bg-red-600 font-bold">Log Out</button>
                             </ul>
-                                : <Link to={"/login"} className="btn text-white bg-cyan-600 font-bold">Login</Link>
+                                : <NavLink to={"/login"} className={({ isActive }) =>
+                                    isActive ? "border bg-cyan-600 text-white rounded-md py-2 px-4" : "border border-cyan-600 rounded-md py-2 px-4"
+                                }>Login</NavLink>
                         }
                     </ul>
                 </div>
@@ -63,9 +65,11 @@ const Navbar = () => {
                                 </div>
                             </div>
                         </div>
-                        <button onClick={handleLogOut} className="btn text-white bg-cyan-600 font-bold">Log Out</button>
+                        <button onClick={handleLogOut} className="btn text-white bg-red-600 font-bold">Log Out</button>
                     </ul>
-                        : <Link to={"/login"} className="btn text-white bg-cyan-600 font-bold">Login</Link>
+                        : <NavLink to={"/login"} className={({ isActive }) =>
+                            isActive ? "border bg-cyan-600 text-white rounded-md py-2 px-4" : "border border-cyan-600 rounded-md py-2 px-4"
+                        }>Login</NavLink>
                 }
             </div>
         </div>

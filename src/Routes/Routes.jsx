@@ -8,6 +8,8 @@ import Register from "../components/Register/Register";
 import UserProfile from "../components/UserProfile/UserProfile"
 import UpdateProfile from "../components/UpdateProfile/UpdateProfile";
 import CardDetails from "../components/CardDetails/CardDetails";
+import PriveteRoute from "../PriveteRoute/PriveteRoute";
+import ErrorPage from "../components/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
@@ -28,17 +30,18 @@ const router = createBrowserRouter([
       },
       {
         path: "/user-profile",
-        element: <UserProfile></UserProfile>
+        element: <PriveteRoute><UserProfile></UserProfile></PriveteRoute>
       },
       {
         path: "/update-profile",
-        element: <UpdateProfile></UpdateProfile>
+        element: <PriveteRoute><UpdateProfile></UpdateProfile></PriveteRoute>
       },
       {
         path: "/details/:id",
-        element: <CardDetails></CardDetails>
+        element: <PriveteRoute><CardDetails></CardDetails></PriveteRoute>
       }
-    ]
+    ],
+    errorElement: <ErrorPage></ErrorPage>
   },
 ]);
 
