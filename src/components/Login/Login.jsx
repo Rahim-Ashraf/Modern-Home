@@ -1,7 +1,9 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { HouseContext } from "../../Provider/Provider";
 import { Helmet } from "react-helmet-async";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Login = () => {
@@ -12,10 +14,12 @@ const Login = () => {
         const password = e.target.password.value;
         login(email, password)
             .then(res => {
-
+                const notifyLoginSuccess = () => toast.success("Loged in successfully");
+                notifyLoginSuccess()
             })
             .catch(err => {
-
+                const notifyLoginError = () => toast.error("Please provide valid email and password");
+                notifyLoginError()
             })
     }
 
@@ -61,6 +65,7 @@ const Login = () => {
                     <Link to={"/register"} className="text-cyan-600 font-bold"> Register Now</Link>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

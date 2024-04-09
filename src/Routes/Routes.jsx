@@ -10,6 +10,7 @@ import UpdateProfile from "../components/UpdateProfile/UpdateProfile";
 import CardDetails from "../components/CardDetails/CardDetails";
 import PriveteRoute from "../PriveteRoute/PriveteRoute";
 import ErrorPage from "../components/ErrorPage/ErrorPage";
+import Orders from "../components/Orders/Orders";
 
 const router = createBrowserRouter([
   {
@@ -39,6 +40,12 @@ const router = createBrowserRouter([
       {
         path: "/details/:id",
         element: <PriveteRoute><CardDetails></CardDetails></PriveteRoute>
+      },
+      {
+        path: "/orders",
+        loader: () => fetch("https://raw.githubusercontent.com/Rahim-Ashraf/estateData/main/estateData.json")
+        .then(res => res.json()),
+        element: <PriveteRoute><Orders></Orders></PriveteRoute>
       }
     ],
     errorElement: <ErrorPage></ErrorPage>

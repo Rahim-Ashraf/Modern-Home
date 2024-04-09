@@ -9,14 +9,11 @@ import { IoMdEyeOff } from "react-icons/io";
 
 
 const Register = () => {
-    const [showPass, setShowPass] = useState(true);
     const { register } = useContext(HouseContext);
+    const [showPass, setShowPass] = useState(true);
     const [registerError, setRegisterError] = useState("")
-    const [registerSuccess, setRegisterSuccess] = useState("")
-
-    const notify = () => toast.success(registerSuccess);
-
     const handleEmailRegister = (e) => {
+        setRegisterError("");
         e.preventDefault();
         const email = e.target.email.value;
         const password = e.target.password.value;
@@ -38,15 +35,13 @@ const Register = () => {
 
         register(email, password)
             .then(res => {
-                return res.user.updateProfile({
-                    displayName: name
-                })
+                const notify = () => toast.success("Registerd successfully");
+                notify()
             })
             .catch(err => {
-
+                const notify = () => toast.error("Registration Faild");
+                notify()
             })
-        setRegisterSuccess("Loged in successfully");
-        notify();
     }
     return (
         <div className="card  shadow-2xl bg-base-100 w-full md:w-2/3 lg:w-1/2 mx-auto">
@@ -78,26 +73,25 @@ const Register = () => {
                             <span className="label-text">Password</span>
                         </label>
                         <div className="relative">
-                            <span onClick={() => setShowPass(!showPass)} className="absolute right-2 top-4">{showPass ? <FaEye /> : <IoMdEyeOff />}</span>
+                            <span onClick={() => setShowPass(!showPass)} className="absolute right-2 top-4">{showPass ? <FaEye className="cursor-pointer w-10" /> : <IoMdEyeOff className="cursor-pointer w-10" />}</span>
                             <input type={showPass ? "password" : "text"} name="password" placeholder="password" className="input input-bordered w-full" required />
                         </div>
                     </div>
+                    <p className="text-red-600">
+                        {registerError}
+                    </p>
                     <div className="form-control mt-6">
                         <button type="submit" className="btn btn-primary">Register</button>
                     </div>
-                    <ToastContainer />
                 </form>
-                <p className="text-red-600">
-                    {registerError}
-                </p>
-                <p className="text-green-600">
-                    {registerSuccess}
-                </p>
+
+
                 <div>
                     <span>Alredy Have an Account?</span>
                     <Link to={"/login"} className="text-blue-600 font-bold"> Login</Link>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };

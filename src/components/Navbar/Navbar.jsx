@@ -24,6 +24,9 @@ const Navbar = () => {
                                 <NavLink to={"/update-profile"} className={({ isActive }) =>
                                     isActive ? "border bg-cyan-600 text-white rounded-md py-2 px-4" : "border border-cyan-600 rounded-md py-2 px-4"
                                 }>Update Profile</NavLink>
+                                <NavLink to={"/orders"} className={({ isActive }) =>
+                                    isActive ? "border bg-cyan-600 text-white rounded-md py-2 px-4" : "border border-cyan-600 rounded-md py-2 px-4"
+                                }>Orders</NavLink>
                                 <div className="flex gap-2 items-center">
                                     <NavLink to={"/user-profile"} className={({ isActive }) =>
                                         isActive ? "border bg-cyan-600 text-white rounded-md py-2 px-4" : "border border-cyan-600 rounded-md py-2 px-4"
@@ -34,6 +37,7 @@ const Navbar = () => {
                                         </div>
                                     </div>
                                 </div>
+
                                 <button onClick={handleLogOut} className="btn text-white bg-red-600 font-bold">Log Out</button>
                             </ul>
                                 : <NavLink to={"/login"} className={({ isActive }) =>
@@ -53,6 +57,9 @@ const Navbar = () => {
                         <NavLink to={"/update-profile"} className={({ isActive }) =>
                             isActive ? "border bg-cyan-600 text-white rounded-md py-2 px-4" : "border border-cyan-600 rounded-md py-2 px-4"
                         }>Update Profile</NavLink>
+                        <NavLink to={"/orders"} className={({ isActive }) =>
+                            isActive ? "border bg-cyan-600 text-white rounded-md py-2 px-4" : "border border-cyan-600 rounded-md py-2 px-4"
+                        }>Orders</NavLink>
                         <div className="flex gap-2 items-center">
                             <NavLink to={"/user-profile"} className={({ isActive }) =>
                                 isActive ? "border bg-cyan-600 text-white rounded-md py-2 px-4" : "border border-cyan-600 rounded-md py-2 px-4"
@@ -65,6 +72,7 @@ const Navbar = () => {
                                 </div>
                             </div>
                         </div>
+
                         <button onClick={handleLogOut} className="btn text-white bg-red-600 font-bold">Log Out</button>
                     </ul>
                         : <NavLink to={"/login"} className={({ isActive }) =>
