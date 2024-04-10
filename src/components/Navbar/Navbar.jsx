@@ -56,7 +56,7 @@ const Navbar = () => {
                         }
                     </ul>
                 </div>
-                <Link className="btn btn-ghost text-xl">Modern Home</Link>
+                <Link className="btn btn-ghost text-xl">Modern House</Link>
             </div>
             <div data-aos="slide-down" data-aos-duration="2000" className="hidden lg:flex gap-6 items-center font-semibold">
                 <NavLink to={"/"} className={({ isActive }) =>

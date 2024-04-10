@@ -17,9 +17,9 @@ const CardDetails = () => {
             <Helmet>
                 <title>Modern House | Card details</title>
             </Helmet>
-            <div className="lg:flex">
+            <div className="lg:flex p-4">
                 <div className="w-full md:w-1/2">
-                    <img className="w-full" src={estateData?.image} alt="Movie" />
+                    <img className="rounded-lg" src={estateData?.image} alt="Movie" />
                 </div>
                 <div className="card-body">
                     <h2 className="text-4xl font-bold mb-4">{estateData?.estate_title}</h2>
@@ -41,7 +41,7 @@ const CardDetails = () => {
                         <div><p><span className="font-bold">Segment name: </span> {estateData?.segment_name}</p></div>
                     </div>
                     <div className="flex justify-between">
-                        <div><p className="text-lg font-bold">For: {estateData?.status}</p></div>
+                        <div><p className="text-lg font-bold">Status: {estateData?.status}</p></div>
                         <div><p className="text-xl font-bold text-cyan-600">Price: {estateData?.price}</p></div>
                     </div>
                 </div>

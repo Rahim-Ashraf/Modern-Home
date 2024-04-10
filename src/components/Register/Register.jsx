@@ -48,7 +48,7 @@ const Register = () => {
                 navigate("/")
             })
             .catch(err => {
-                const registerError = () => toast.error("Registration Faild");
+                const registerError = () => toast.error("This emai already exist");
                 registerError()
             })
     }
