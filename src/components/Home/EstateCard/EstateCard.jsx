@@ -10,7 +10,7 @@ const EstateCard = ({ estateData }) => {
                 <h2 className="card-title">{estate_title}</h2>
                 <div className="flex justify-between font-semibold">
                     <p>Status: {status}</p>
-                    <p>{price}</p>
+                    <p className="font-bold text-cyan-600">{price}</p>
                 </div>
                 <Link to={`details/${id}`} className="btn btn-primary">View Property</Link>
             </div>

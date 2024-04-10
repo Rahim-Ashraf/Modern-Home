@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { HouseContext } from "../../Provider/Provider";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { Helmet } from "react-helmet-async";
 import { FaEye } from "react-icons/fa";
@@ -19,8 +19,8 @@ const Register = () => {
     const [showPass, setShowPass] = useState(true);
     const [registerError, setRegisterError] = useState("")
     const handleEmailRegister = (e) => {
-        setRegisterError("");
         e.preventDefault();
+        setRegisterError("");
         const email = e.target.email.value;
         const password = e.target.password.value;
         const name = e.target.name.value;
@@ -43,13 +43,13 @@ const Register = () => {
             .then(res => {
                 updateUser(name, photoURL)
                 .then(res=> console.log("succeesss"))
-                const notify = () => toast.success("Registerd successfully");
+                const registerSuccess = () => toast.success("Registerd successfully");
+                registerSuccess()
                 navigate("/")
-                notify()
             })
             .catch(err => {
-                const notify = () => toast.error("Registration Faild");
-                notify()
+                const registerError = () => toast.error("Registration Faild");
+                registerError()
             })
     }
     return (
@@ -100,7 +100,6 @@ const Register = () => {
                     <Link to={"/login"} className="text-blue-600 font-bold"> Login</Link>
                 </div>
             </div>
-            <ToastContainer />
         </div>
     );
 };

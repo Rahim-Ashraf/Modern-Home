@@ -44,7 +44,6 @@ const Provider = ({ children }) => {
     useEffect(() => {
         const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
             setUser(currentUser)
-
             setLoader(false);
         });
         return () => {

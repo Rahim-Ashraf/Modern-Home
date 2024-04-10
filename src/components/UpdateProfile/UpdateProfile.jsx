@@ -1,19 +1,22 @@
 import { useContext } from "react";
 import { Helmet } from "react-helmet-async";
 import { HouseContext } from "../../Provider/Provider";
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const UpdateProfile = () => {
-    const { updateUser } = useContext(HouseContext)
-
+    const { updateUser, user } = useContext(HouseContext)
     const handleProfileUpdate = (e) => {
         e.preventDefault()
         const name = e.target.name.value
         const photoURL = e.target.photoURL.value
-        console.log(name,photoURL)
+        console.log(name, photoURL)
         updateUser(name, photoURL)
-            .then(res => console.log("update successfully"))
+            .then(res => {
+                const notify = () => toast.success("Profile updated successfully")
+                notify()
+            })
     }
 
     return (
@@ -21,7 +24,15 @@ const UpdateProfile = () => {
             <Helmet>
                 <title>Modern House | Update profile</title>
             </Helmet>
-
+            <div className="flex justify-center">
+                <div className="space-y-4">
+                    <h2 className="text-3xl font-bold">Name: {user?.displayName}</h2>
+                    <h2>Email: {user?.email}</h2>
+                    <div className="max-w-96">
+                        <img src={user?.photoURL} alt={user?.displayName} />
+                    </div>
+                </div>
+            </div>
             <div className="hero-content mx-auto">
                 <div className="card shrink-0 w-full shadow-2xl bg-base-100">
                     <h2 className="text-4xl font-bold m-10">Update your profile</h2>
@@ -45,6 +56,8 @@ const UpdateProfile = () => {
                     </form>
                 </div>
             </div>
+            <ToastContainer />
+
         </div>
     );
 };

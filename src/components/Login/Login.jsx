@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { HouseContext } from "../../Provider/Provider";
 import { Helmet } from "react-helmet-async";
-import { ToastContainer, toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import AOS from 'aos';
 import 'aos/dist/aos.css'
@@ -14,22 +14,25 @@ const Login = () => {
     useEffect(() => {
         AOS.init()
     }, [])
+    const notifyLoginSuccess = () => toast.success("Loged in successfully");
+    const notifyLoginError = () => toast.error("Please provide valid email and password");
     const navigate = useNavigate()
     const location = useLocation()
     const { login, googleLogin, githubLogin } = useContext(HouseContext)
     const handleEmailLogin = e => {
         e.preventDefault();
+
         const email = e.target.email.value;
         const password = e.target.password.value;
         login(email, password)
             .then(res => {
-                const notifyLoginSuccess = () => toast.success("Loged in successfully");
+
                 navigate(location?.state ? location.state : "/")
                 notifyLoginSuccess()
 
             })
             .catch(err => {
-                const notifyLoginError = () => toast.error("Please provide valid email and password");
+
                 notifyLoginError()
             })
     }
@@ -38,9 +41,11 @@ const Login = () => {
         googleLogin()
             .then(res => {
                 navigate(location?.state ? location.state : "/")
+                notifyLoginSuccess()
             })
             .catch(err => {
-                console.error(err)
+                notifyLoginError()
+
             })
 
     }
@@ -48,9 +53,10 @@ const Login = () => {
         githubLogin()
             .then(res => {
                 navigate(location?.state ? location.state : "/")
+                notifyLoginSuccess()
             })
             .catch(err => {
-                console.error(err)
+                notifyLoginError()
             })
     }
     return (
@@ -89,7 +95,7 @@ const Login = () => {
                     <Link to={"/register"} className="text-cyan-600 font-bold"> Register Now</Link>
                 </div>
             </div>
-            <ToastContainer />
+
         </div>
     );
 };
